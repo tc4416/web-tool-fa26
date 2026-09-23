@@ -23,6 +23,17 @@ document.body.addEventListener("mousemove", (ev) => {
 
   //use mouse xy as center of square
   let mySquare = document.getElementById("mySquare");
-  mySquare.style.left = clientX -50 +"px";
-  mySquare.style.top = clientY-50 + "px";
+  mySquare.style.left = clientX - 50 + "px";
+  mySquare.style.top = clientY - 50 + "px";
+
+  let box = document.getElementById("check");
+  let boxRect = box.getBoundingClientRect();
+  let boxCenterX = boxRect.left + boxRect.width / 2;
+  let boxCenterY = boxRect.top + boxRect.height / 2;
+  let distance = Math.hypot(clientX - boxCenterX, clientY - boxCenterY);
+
+  console.log(boxRect.left, boxRect.top);
+  if (distance < 100) {
+    console.log("ayo");
+  }
 });
