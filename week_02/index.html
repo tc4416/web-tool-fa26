@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.sound.min.js"></script>
+    <script src="p5.riso.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <div class="content">
+      <h1>⊹ ₊ ⁺‧₊˚ dither urself ˚₊‧⁺ ₊ ⊹</h1>
+      <label for="threshold">☆ dither level </label>
+      <input type="range" id="threshold" value="115" min="80" max="130" />
+      <br />
+      <br />
+      <label for="sizeSelect">☆ choose your gif size:</label>
+      <select id="sizeSelect">
+        <option value="120x90">120 x 90</option>
+        <option value="160x120">160 x 120</option>
+        <option value="200x150">200 x 150</option>
+        <option value="240x180">240 x 180</option>
+        <option value="280x210">280 x 210</option>
+        <option value="320x240">320 x 240</option>
+      </select>
+
+      <br />
+      <br />
+
+      <button type="button" id="snap">snap !</button>
+      <button type="button" id="makeGif">make gif!</button>
+      <button type="button" id="saveFile">save gif !</button>
+      <button type="button" id="reset">reset !</button>
+      <br />
+
+      <script src="sketch.js"></script>
+    </div>
+    <script src="tool.js"></script>
+  </body>
+</html>
