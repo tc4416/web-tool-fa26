@@ -1,0 +1,40 @@
+<head>
+  <style>
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+
+    div {
+      border: 1px solid black;
+    }
+    #mainContainer {
+      display: flex;
+      flex-direction: row;
+      border: 1px solid yellow;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    #leftMostSidebar {
+      width: 40px;
+    }
+    #leftSidebar {
+      width: 150px;
+    }
+    #mainCanvas {
+      flex-grow: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="mainContainer">
+    <div id="leftMostSidebar">A</div>
+    <div id="leftSidebar">B</div>
+        <div id="mainCanvas">B</div>
+    <div id="rightMostSidebar">C</div>
+    <div id="rightSidebar">F</div>
+  </div>
+</body>

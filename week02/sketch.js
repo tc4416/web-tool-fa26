@@ -37,7 +37,7 @@ function setup() {
 
 function draw() {
   if (playFrame == -1) return;
-  if (window.sizeChange == true) {
+  if (window.sizeChange == true  && snaps.length > 0) {
     console.log(window.sizeChange);
     clearSnap();
     window.sizeChange = false;
