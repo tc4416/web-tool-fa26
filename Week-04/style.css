@@ -1,0 +1,109 @@
+html,
+body {
+  overflow: clip;
+  height: 100vh;
+  margin: 0;
+  margin: 0px;
+  padding: 0;
+  background-color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+h1 {
+  font-size: 20px;
+
+  font-family: "Silkscreen", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+ol {
+  font-family: "Silkscreen", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 10px;
+}
+p {
+  font-family: "Silkscreen", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+canvas {
+  display: block;
+  margin: 50px;
+  border: 1px dashed black;
+  /* flex-grow: 1; */
+}
+/* div {
+  border: 1px solid orange;
+} */
+
+#title {
+  padding-left: 1.5vw;
+
+  padding-top: 7vh;
+  display: flex;
+  flex-direction: column;
+  width: 15vw;
+  text-align: left;
+  /* border: 1px solid green; */
+}
+
+pixel-canvas {
+  display: block;
+}
+
+.label {
+  font-family: "Silkscreen", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 12px;
+}
+
+#mainContainer {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: row;
+  /* border: 1px solid purple; */
+}
+#p5 {
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  /* border: 1px solid pink; */
+  /* flex-grow: 2; */
+  padding-right: 60px;
+  box-sizing: border-box;
+}
+#interface {
+  border-radius: 25px;
+  position: fixed;
+  bottom: 18vh;
+  display: flex;
+  left: 43vw;
+  flex-direction: row;
+  /* border: 1px solid orange; */
+  height: 5vh;
+  width: 30vw;
+  z-index: 2;
+  /* background: pink; */
+  align-items: flex-end;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  justify-content: center;
+  gap: 20px;
+
+  flex-wrap: wrap;
+}
+
+button {
+  font-family: "Silkscreen", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 12px;
+  padding: 5px 10px;
+}

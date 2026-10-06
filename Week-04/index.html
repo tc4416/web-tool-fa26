@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.sound.min.js"></script>
+    <script src="p5.riso.js"></script>
+    <script type="module" src="pixel-canvas.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <div class="content" id="mainContainer">
+      <pixel-canvas
+        data-gap="3"
+        data-speed="50"
+        data-colors="#fef08a, #fde047, #eab308"
+      >
+        <div id="title">
+          <h1>Dither Urself</h1>
+          <!-- <h1>˚₊‧⁺ ₊ ⊹ <br>dither<br>˚₊‧⁺ ₊ ⊹<br>urself<br>˚₊‧⁺ ₊ ⊹</h1> -->
+          <p>take some snapshots and make a gif:)</p>
+
+          <br />
+          <br />
+          <p>A step by step guide :</p>
+          <ol>
+            <li>Choose the gif size.</li>
+            <li>Snap some shots. (as many as u want ^.<)</li>
+            <li>Make the gif.</li>
+            <li>Save the gif.</li>
+            <li>Reset</li>
+          </ol>
+
+          <br />
+          <br />
+
+          <label for="sizeSelect" class="label">☆ choose your gif size:</label>
+          <select id="sizeSelect">
+            <option value="120x90">120 x 90</option>
+            <option value="160x120">160 x 120</option>
+            <option value="200x150">200 x 150</option>
+            <option value="240x180">240 x 180</option>
+            <option value="280x210">280 x 210</option>
+            <option value="320x240">320 x 240</option>
+          </select>
+          <br />
+          <br />
+          <label for="threshold" class="label">☆ dither level </label>
+          <input
+            type="range"
+            id="threshold"
+            value="115"
+            min="80"
+            max="130"
+            disabled
+          />
+        </div>
+      </pixel-canvas>
+
+      <br />
+      <div id="p5">
+        <script src="sketch.js"></script>
+
+            <div id="interface">
+      <br />
+
+      <button type="button" id="snap">snap !</button>
+      <button type="button" id="makeGif" disabled>make gif!</button>
+      <button type="button" id="saveFile" disabled>
+        save gif ! <disabled></disabled>
+      </button>
+      <button type="button" id="reset" disabled>reset !</button>
+    </div>
+      </div>
+    </div>
+
+    <script src="tool.js"></script>
+  </body>
+</html>
