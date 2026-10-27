@@ -1,0 +1,53 @@
+<!doctype html>
+
+<header></header>
+
+<body>
+  <!-- <h1>http://itp-ml.itp.tsoa.nyu.edu:11434/</h1> -->
+  <input id="webPageDescription" />ask question/>
+  <button id="startButton">start</button>
+
+  <script>
+    let url = "http://itp-ml.itp.tsoa.nyu.edu:11434/api/chat";
+
+    async function queryLanguageModel(userQuery) {
+      let ollamaOptions = {
+        model: "gemma4:e4b",
+        messages: [
+          {
+            role: "user",
+            content: "what do you think about the intersection between fortune telling/divonation vs predictive text/algorithm in modern technologies? i would want my thesis (@nyu itp ) to be related to this topic. WHat can my argument be?",
+          },
+        ],
+        // messages: [
+        //   {
+        //     role: "user",
+        //     content: "what do you think about" + userQuery,
+        //   },
+        // ],
+        stream: false,
+      };
+
+      let options = {
+        method: "POST",
+        body: JSON.stringify(ollamaOptions),
+      };
+
+      let response = await fetch(url, options);
+      let data = await response.json();
+      let modelResponse = data.message.content;
+      console.log(modelResponse);
+
+      //   document.body.innerHTML= modelResponse
+      //
+    }
+
+    queryLanguageModel();
+    let button = document.getElementById("startButton");
+    button.addEventListener("click", function () {
+      let myInput = dovumrny.getElementByID("webPageDescription");
+      console.log(myInput.value);
+      queryLanguageModel(myInput.value);
+    });
+  </script>
+</body>

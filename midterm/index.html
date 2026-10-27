@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>ready.blog</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="config.js"></script>
+    <script src="main.js"></script>
+    <link rel="icon" type="image/x-icon" href="icon.png" />
+  </head>
+  <body>
+    <h1>Thoughts of Today</h1>
+    <p id="description">
+      Dump a thought, hit enter. <br />
+      When you’re ready to blog, hit submit and your notes will come back as
+      clean bullet points to paste. <br />
+      One tab per project, double click the tab to rename project.
+    </p>
+    <div id="tabBar"></div>
+    <div id="inputField">
+      <ul>
+        <li>
+          <textarea
+            autofocus
+            class="entries"
+            id="entry1"
+            placeholder="anything you'd like to dump"
+          ></textarea>
+        </li>
+      </ul>
+    </div>
+    <div id="submit">
+      <button class="button" id="submitButton">submit</button>
+      <button class = "button" id = "clearButton">clear</button>
+    </div>
+
+    <div id="outputField">
+      <p id="output"></p>
+    </div>
+  </body>
+</html>
