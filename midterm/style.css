@@ -212,3 +212,21 @@ textarea {
 #output li {
   margin-bottom: 6px;
 }
+
+#keyRow {
+  margin-top: 56px;
+  font-size: 12px;
+  color: var(--mid);
+  max-width: 620px;
+}
+#keyRow label { display: block; margin-bottom: 6px; }
+#keyRow input {
+  font-family: inherit;
+  font-size: 12px;
+  width: 320px;
+  padding: 6px 8px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+}
+#keyRow .note { display: block; margin-top: 6px; color: #9a9a9a; }

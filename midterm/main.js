@@ -13,7 +13,13 @@ window.onload = () => {
   let output = document.getElementById("output");
 
   let url = "https://api.openai.com/v1/chat/completions";
-  let apiKey = key;
+
+  let apiKeyField = document.getElementById("apiKey");
+//deaking with api key
+  apiKeyField.value = localStorage.getItem("apiKey") || "";
+  apiKeyField.addEventListener("input", () => {
+    localStorage.setItem("apiKey", apiKeyField.value);
+  });
 
   // bring back whatever was saved last time
   let saved = localStorage.getItem("projects");
@@ -24,6 +30,12 @@ window.onload = () => {
 
   //LLM Request Function
   async function queryLanguageModel(userQuery) {
+
+        if (!apiKeyField.value.trim()) {
+      output.textContent = "Paste your OpenAI key at the bottom of the page first.";
+      return;
+    }
+
     output.textContent = "thinking...";
     //option for output
     let mode = document.querySelector('input[name="mode"]:checked').value;
@@ -64,7 +76,7 @@ window.onload = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer " + apiKey,
+        Authorization: "Bearer " + apiKeyField.value,
       },
       body: JSON.stringify(payload),
     };
