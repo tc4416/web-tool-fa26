@@ -8,13 +8,17 @@
     <script src="main.js"></script>
     <link rel="icon" type="image/x-icon" href="icon.png" />
   </head>
+  <div id = "tabMenu">
+      <div class="menuItem" id="menuRename">rename</div>
+      <div class="menuItem" id="menuDelete">delete</div>
+  </div>
   <body>
     <h1>Thoughts of Today</h1>
     <p id="description">
-      Dump a thought, hit enter. <br />
-      When you’re ready to blog, hit submit and your notes will come back as
-      clean bullet points to paste. <br />
-      One tab per project, double click the tab to rename project.
+      Dump a thought, hit enter. Typos don’t matter.
+<br />
+When you’re ready to blog, hit submit and your notes come back cleaned up, as bullet points to paste. <br />
+      One tab per project, right click to rename or delete the project.
     </p>
     <div id="tabBar"></div>
     <div id="inputField">
@@ -29,13 +33,21 @@
         </li>
       </ul>
     </div>
+<!-- toggle for output options -->
+  <div id="mode">
+      <label><input type="radio" name="mode" value="bullets" checked /> bullet points</label>
+      <label><input type="radio" name="mode" value="paragraph" /> paragraph</label>
+    </div>
+
+
     <div id="submit">
       <button class="button" id="submitButton">submit</button>
       <button class = "button" id = "clearButton">clear</button>
     </div>
 
     <div id="outputField">
-      <p id="output"></p>
+      <h2 class="blockTitle">output</h2>
+      <div id="output"></div>
     </div>
   </body>
 </html>

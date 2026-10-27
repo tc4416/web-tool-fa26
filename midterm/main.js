@@ -19,20 +19,39 @@ window.onload = () => {
   let saved = localStorage.getItem("projects");
   if (saved) projects = JSON.parse(saved);
 
+  let tabMenu = document.getElementById("tabMenu");
+  let menuTarget = null;
+
   //LLM Request Function
   async function queryLanguageModel(userQuery) {
     output.textContent = "thinking...";
+    //option for output
+    let mode = document.querySelector('input[name="mode"]:checked').value;
+    let systemPrompt;
+
+    if (mode == "bullets") {
+      systemPrompt =
+        "Fix grammar and flow only. " +
+        "Do not restructure sentence or substitute word choices, or change the tone. Keep the author's phrasing wherever it is already correct." +
+        "Return one bullet per line," +
+        "each starting with the bullet point dot, and nothing else.";
+    } else {
+      ((systemPrompt =
+        "Join these notes into flowing prose, in the order given. Keep the " +
+        "author's own words, phrasing and tone — add only the connecting " +
+        "words needed to make the sentences run together, and fix grammar. " +
+        "Delete weird and unnecessary phrasing" +
+        "Add linebreak when necessary"),
+        "Do not add ideas, examples, or commentary that is not in the notes." +
+          " Do not add an introduction or conclusion. Return the prose and nothing else.");
+    }
 
     let payload = {
       model: "gpt-4o-mini",
       messages: [
         {
           role: "system",
-          content:
-            "Fix grammar and flow only. Do not restructure sentences, " +
-            "substitute word choices, or change the tone. Keep the author's " +
-            "phrasing wherever it is already correct. Return the bullet list libe by line" +
-            "and nothing else.",
+          content: systemPrompt,
         },
         {
           role: "user",
@@ -61,7 +80,23 @@ window.onload = () => {
 
     let modelResponse = data.choices[0].message.content;
     console.log(modelResponse);
-    output.textContent = modelResponse;
+        if (mode === "bullets") {
+      output.innerHTML = "";
+      let ul = document.createElement("ul");
+
+      modelResponse.split("\n").forEach((line) => {
+        let text = line.replace(/^[-•*]\s*/, "").trim();
+        if (!text) return;
+        let li = document.createElement("li");
+        li.textContent = text;
+        ul.appendChild(li);
+      });
+
+      output.appendChild(ul);
+    } else {
+      output.textContent = modelResponse;
+    }
+    // output.textContent = modelResponse;
   }
 
   // read every textarea on screen back into the current project,
@@ -107,7 +142,10 @@ window.onload = () => {
 
       // click to switch
       tab.addEventListener("click", () => {
-        if (i === current) return;
+        if (i === current) {
+          //current tab
+          return;
+        }
         saveEntries();
         current = i;
         renderTabs();
@@ -131,6 +169,14 @@ window.onload = () => {
           e.preventDefault();
           tab.blur();
         }
+      });
+
+      tab.addEventListener("contextmenu", (e) => {
+        e.preventDefault();
+        menuTarget = i;
+        tabMenu.style.left = e.pageX + "px";
+        tabMenu.style.top = e.pageY + "px";
+        tabMenu.classList.add("open");
       });
 
       tabBar.appendChild(tab);
@@ -185,7 +231,36 @@ window.onload = () => {
     output.textContent = "";
     focusLast();
   });
+  //dismiss rightclick menu
+  document.addEventListener("click", () => tabMenu.classList.remove("open"));
 
+  document.getElementById("menuRename").addEventListener("click", () => {
+    let tab = tabBar.children[menuTarget];
+    tab.contentEditable = "true";
+    tab.focus();
+
+    // select the whole name so typing replaces it
+    let range = document.createRange();
+    range.selectNodeContents(tab);
+    let sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+  });
+
+  document.getElementById("menuDelete").addEventListener("click", () => {
+    if (projects.length === 1) return; // never delete the last tab
+
+    saveEntries();
+    projects.splice(menuTarget, 1);
+
+    if (menuTarget < current) current--;
+    if (current >= projects.length) current = projects.length - 1;
+
+    localStorage.setItem("projects", JSON.stringify(projects));
+    renderTabs();
+    renderEntries();
+    focusLast();
+  });
   renderTabs();
   renderEntries();
   focusLast();
