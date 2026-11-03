@@ -15,7 +15,7 @@ window.onload = () => {
   let url = "https://api.openai.com/v1/chat/completions";
 
   let apiKeyField = document.getElementById("apiKey");
-//deaking with api key
+//dealing with api key
   apiKeyField.value = localStorage.getItem("apiKey") || "";
   apiKeyField.addEventListener("input", () => {
     localStorage.setItem("apiKey", apiKeyField.value);
